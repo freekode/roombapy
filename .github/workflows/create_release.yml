@@ -28,7 +28,5 @@ jobs:
             ${{ env.GIT_RELEASE_NOTES }}
             
             Test
-            
-            ${{ 
           draft: true
           prerelease: false
