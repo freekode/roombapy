@@ -21,6 +21,6 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           body: |
-            {{ git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s" }}
+            ${{ git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%h %s" }}
           draft: false
           prerelease: false
