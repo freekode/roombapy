@@ -18,7 +18,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: |
-            ${{ GIT_RELEASE_NOTES }}
+          body: ${{ env.GIT_RELEASE_NOTES }}
           draft: false
           prerelease: false
