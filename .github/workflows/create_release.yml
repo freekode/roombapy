@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Moving build to artifacts directory
-        run: ./scripts/release_notes.sh
+        run: ::set-env name=GIT_RELEASE_NOTES::"$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:'%h %s')"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
