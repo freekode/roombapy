@@ -14,7 +14,7 @@ jobs:
       - name: Retrieve version
         run: |
             echo ::set-env name=GIT_RELEASE_NOTES::`git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:'%h %s'`
-            echo ${{ GIT_RELEASE_NOTES }}
+            echo ${{ env.GIT_RELEASE_NOTES }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
