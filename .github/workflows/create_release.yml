@@ -16,7 +16,7 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_RELEASE_NOTES: $(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:\'%h %s\')
+          GIT_RELEASE_NOTES: $(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:'%h %s')
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
