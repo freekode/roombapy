@@ -55,3 +55,7 @@ jobs:
       with:
         password: ${{ secrets.pypi_test }}
         repository_url: https://test.pypi.org/legacy/
+    - name: Python dist
+      uses: actions/upload-artifact@v1
+      with:
+        path: dist/
