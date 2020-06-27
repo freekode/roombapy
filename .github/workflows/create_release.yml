@@ -15,11 +15,12 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_RELEASE_NOTES: $(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:\'%h %s\')
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           body: |
-            ${{ GIT_RELEASE_NOTES }}
+            ${ GIT_RELEASE_NOTES }
           draft: false
           prerelease: false
