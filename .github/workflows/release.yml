@@ -17,7 +17,7 @@ jobs:
         python -m pip install sdist twine --user
     - name: Build a binary wheel and a source tarball
       run: >-
-        python setup.py sdist --out-dir dist
+        python setup.py sdist
     - name: Publish distribution 📦 to Test PyPI
       uses: pypa/gh-action-pypi-publish@master
       with:
