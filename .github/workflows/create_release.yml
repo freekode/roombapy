@@ -1,12 +1,22 @@
 on:
-  create:
-    tags:
-      - v*
+  push:
+    branches:
+      - master
     
 name: Release
 
 jobs:
+  is_version_bump_commit:
+    name: Is version bump commit
+    runs-on: ubuntu-latest
+    steps:
+    - name: test commit
+      run: echo 'hello'
+    - name: cancelling
+      uses: andymckay/cancel-action@0.2
+     
   release:
+    needs: is_version_bump_commit
     name: Create Release
     runs-on: ubuntu-latest
     steps:
@@ -36,6 +46,7 @@ jobs:
         prerelease: false
   
   build-n-publish:
+    needs: is_version_bump_commit
     name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
     runs-on: ubuntu-18.04
     steps:
